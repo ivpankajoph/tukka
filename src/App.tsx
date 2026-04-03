@@ -1,4 +1,9 @@
 import { motion } from "motion/react";
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
 import { 
   ShoppingBag, 
   TrendingUp, 
@@ -23,7 +28,12 @@ import {
   Phone,
   MapPin,
   ChevronRight,
-  RotateCcw
+  RotateCcw,
+  Star,
+  Activity,
+  Database,
+  Smartphone,
+  MessageSquare
 } from "lucide-react";
 import { useState, useEffect, ReactNode, FormEvent } from "react";
 
@@ -111,6 +121,9 @@ const ContactForm = () => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead');
+        }
         window.location.href = "https://rzp.io/rzp/Zvuarx1";
       } else {
         alert("Something went wrong. Please try again.");
@@ -335,7 +348,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
 
 const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
   return (
-    <section className="relative pt-28 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-20 pb-20 lg:pt-24 lg:pb-32 overflow-visible bg-white">
       {/* Background Accents */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-50/30 -skew-x-12 transform origin-top-right -z-10"></div>
       
@@ -397,7 +410,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="mt-20 lg:mt-0 relative"
+            className="mt-4 lg:-mt-40 relative"
           >
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(30,27,75,0.25)] border-8 border-white">
               <img 
@@ -493,6 +506,158 @@ const Ecosystem = () => {
               <h3 className="text-3xl font-black mb-5 tracking-tight">{service.title}</h3>
               <p className="text-indigo-200 text-lg leading-relaxed font-medium">{service.description}</p>
             </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const AdvancedFeatures = () => {
+  const sections = [
+    {
+      title: "Advanced Analytics",
+      description: "Get deep insights into your business performance with our enterprise-grade analytics suite.",
+      icon: <Activity className="text-orange-500" size={40} />,
+      features: [
+        "Real-time visitor tracking & behavior",
+        "Detailed sales & revenue breakdown",
+        "Conversion rate optimization (CRO) metrics",
+        "Heatmaps & customer journey mapping",
+        "Custom exportable reports (PDF/Excel)"
+      ],
+      color: "from-orange-500/20 to-orange-500/5",
+      borderColor: "border-orange-500/20"
+    },
+    {
+      title: "Advanced SEO Tools",
+      description: "Dominating search results shouldn't be hard. We automate the technical SEO for you.",
+      icon: <Database className="text-indigo-600" size={40} />,
+      features: [
+        "Automatic Meta tag & Title generation",
+        "Dynamic XML Sitemaps for Google",
+        "Custom URL structures (SEO Friendly)",
+        "Image Alt-text & size optimization",
+        "Instant indexation on Search Console"
+      ],
+      color: "from-indigo-500/20 to-indigo-500/5",
+      borderColor: "border-indigo-500/20"
+    },
+    {
+      title: "Advanced Marketing",
+      description: "Scale your brand with tools that drive high-intent traffic and recover lost sales.",
+      icon: <TrendingUp className="text-orange-500" size={40} />,
+      features: [
+        "One-click FB Pixel & Meta Ads integration",
+        "Google Merchant Center Feed (Shopping Ads)",
+        "Abandoned Cart Recovery (Email & SMS)",
+        "WhatsApp Checkout & Order notifications",
+        "Built-in Coupon & Discount engine"
+      ],
+      color: "from-orange-500/20 to-orange-500/5",
+      borderColor: "border-orange-500/20"
+    }
+  ];
+
+  return (
+    <section className="py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-24">
+          <h2 className="text-indigo-900 font-black uppercase tracking-[0.3em] text-sm mb-6">Enterprise Grade Tools</h2>
+          <p className="text-4xl lg:text-6xl font-black text-indigo-950 tracking-tight">Master Your Marketplace</p>
+          <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto font-medium">Standard features are just the beginning. Our advanced suite is designed for serious scaling.</p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-10">
+          {sections.map((section, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className={`relative p-10 rounded-[3rem] border-2 ${section.borderColor} bg-gradient-to-br ${section.color} flex flex-col h-full`}
+            >
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mb-8 shadow-xl shadow-indigo-100">
+                {section.icon}
+              </div>
+              <h3 className="text-3xl font-black text-indigo-950 mb-4">{section.title}</h3>
+              <p className="text-gray-600 font-bold mb-8 leading-relaxed italic">"{section.description}"</p>
+              
+              <ul className="space-y-4 mb-10 flex-grow">
+                {section.features.map((feature, fIdx) => (
+                  <li key={fIdx} className="flex items-start gap-3 text-indigo-950 font-bold">
+                    <CheckCircle size={18} className="text-green-600 mt-1 flex-shrink-0" />
+                    <span className="leading-tight">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="pt-6 border-t border-gray-100/50">
+                <div className="flex items-center gap-2 text-indigo-900 font-black uppercase tracking-widest text-[10px]">
+                  <Zap size={12} className="fill-indigo-900" />
+                  Included in ₹599 Plan
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ReviewsCarousel = () => {
+  const reviews = [
+    { name: "Rajesh Kumar", role: "Owner, Rajesh Furniture", text: "Tukka.tech ne mere traditional business ko online laakar meri sales 3 guna badha di. Supporting staff bahut helpful hai.", rating: 5, location: "Delhi" },
+    { name: "Priya Sharma", role: "Founder, Priya Boutique", text: "I was worried about technical stuff, but Tukka handled everything. From website to logistics, it's a complete package.", rating: 5, location: "Mumbai" },
+    { name: "Aman Gupta", role: "Manager, Global Sarees", text: "The delivery management is seamless. We don't have to worry about pickups anymore. Highly recommended for retailers.", rating: 5, location: "Jaipur" },
+    { name: "Vikram Singh", role: "Wholesaler, VS Electronics", text: "Pehle hum sirf local bechte the, ab pure desh mein delivery hoti hai. Best part is the low 2% commission.", rating: 4, location: "Ludhiana" },
+    { name: "Sanya Mallik", role: "Owner, Lush Decor", text: "The SEO features actually work! We started getting organic orders within the first month. Amazing experience.", rating: 5, location: "Bangalore" },
+    { name: "Amit Patel", role: "Director, Patel Spices", text: "Weekly settlements are always on time. Very transparent pricing with no hidden charges. Trustworthy partner.", rating: 5, location: "Ahmedabad" },
+  ];
+
+  // Double the reviews for infinite scroll
+  const duplicatedReviews = [...reviews, ...reviews];
+
+  return (
+    <section className="py-32 bg-indigo-50/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
+        <h2 className="text-orange-500 font-black uppercase tracking-[0.3em] text-sm mb-6">Success Stories</h2>
+        <p className="text-4xl lg:text-6xl font-black text-indigo-950 tracking-tight">Trusted by 100+ Vendors</p>
+      </div>
+
+      <div className="relative flex group py-10">
+        <div
+          className="flex gap-8 animate-marquee group-hover:pause-animation px-4"
+        >
+          {duplicatedReviews.map((review, idx) => (
+            <div
+              key={idx}
+              className="w-[400px] bg-white p-10 rounded-[2.5rem] shadow-xl shadow-indigo-100/50 border border-indigo-50 flex flex-col gap-6 flex-shrink-0"
+            >
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={16}
+                    className={i < review.rating ? "fill-orange-500 text-orange-500" : "text-gray-200"}
+                  />
+                ))}
+              </div>
+              <p className="text-lg font-bold text-indigo-950 italic whitespace-normal leading-relaxed">
+                "{review.text}"
+              </p>
+              <div className="mt-4 flex items-center gap-4">
+                <div className="w-12 h-12 bg-indigo-900 rounded-full flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                  {review.name.charAt(0)}
+                </div>
+                <div>
+                  <h4 className="font-black text-indigo-950 leading-none mb-1">{review.name}</h4>
+                  <p className="text-xs font-bold text-gray-500 uppercase tracking-widest leading-tight">{review.role} • {review.location}</p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -843,6 +1008,8 @@ export default function App() {
         <HowItWorks onOpenModal={setActiveModal} />
         <Ecosystem />
         <Pricing onOpenModal={setActiveModal} />
+        <AdvancedFeatures />
+        <ReviewsCarousel />
         <DeliveryBanner />
         
         {/* Final CTA Section */}
