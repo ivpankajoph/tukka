@@ -218,17 +218,17 @@ const HelpCenterContent = () => {
         <div className="p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
           <Mail className="text-indigo-600 mb-4" />
           <h4 className="font-black text-indigo-950 mb-2">Email Support</h4>
-          <p className="text-sm text-gray-600 font-bold">support@tukka.tech</p>
+          <p className="text-sm text-gray-600 font-bold">sell@tukka.tech</p>
         </div>
         <div className="p-6 bg-orange-50 rounded-2xl border border-orange-100">
           <Phone className="text-orange-600 mb-4" />
           <h4 className="font-black text-indigo-950 mb-2">Call Us</h4>
-          <p className="text-sm text-gray-600 font-bold">+91 1800-TUKKA-01</p>
+          <p className="text-sm text-gray-600 font-bold">+91 9873138444</p>
         </div>
         <div className="p-6 bg-indigo-50 rounded-2xl border border-indigo-100">
           <MapPin className="text-indigo-600 mb-4" />
           <h4 className="font-black text-indigo-950 mb-2">Office</h4>
-          <p className="text-sm text-gray-600 font-bold">Bangalore, India</p>
+          <p className="text-xs leading-snug text-gray-600 font-bold">Office no 1042, Gaur City Mall, Office Suits, Greater Noida, Uttar Pradesh, India, 201310</p>
         </div>
       </div>
       
