@@ -281,13 +281,13 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
             <div className="w-10 h-10 bg-indigo-900 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-indigo-200">T</div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold tracking-tight text-indigo-950 leading-none">Tukka.tech</span>
               <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider mt-0.5">( Sellers Login Authorized Partner )</span>
             </div>
-          </div>
+          </a>
           
           <div className="hidden md:flex items-center space-x-10">
             <a href="#how-it-works" className="text-sm font-semibold text-gray-600 hover:text-indigo-900 transition-colors">How it works</a>
@@ -678,7 +678,7 @@ const DeliveryBanner = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-orange-500/10 rounded-[3rem] rotate-3 -z-10"></div>
               <img 
-                src="/ecom2.jpg" 
+                src="/ecom2.png" 
                 alt="Courier boy delivering package to home" 
                 className="relative z-10 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(249,115,22,0.3)] w-full h-auto object-cover border-8 border-white"
                 referrerPolicy="no-referrer"
@@ -697,19 +697,23 @@ const Footer = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="col-span-1 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-8">
+            <a href="/" className="flex items-center gap-3 mb-8 hover:opacity-90 transition-opacity w-fit inline-flex">
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-indigo-950 font-black text-2xl">T</div>
               <div className="flex flex-col">
                 <span className="text-3xl font-black tracking-tight leading-none">Tukka.tech</span>
                 <span className="text-[11px] font-bold text-indigo-200 uppercase tracking-wider mt-1">( Sellers Login Authorized Partner )</span>
               </div>
-            </div>
+            </a>
             <p className="text-indigo-200 mb-6 leading-relaxed font-medium text-lg">
               Empowering local brands to go digital with minimal 2% commission and maximum growth.
             </p>
-            <div className="flex items-start gap-3 text-indigo-200 font-medium text-sm">
+            <div className="flex items-start gap-3 text-indigo-200 font-medium text-sm mb-4">
               <MapPin size={20} className="mt-0.5 text-orange-500 flex-shrink-0" />
               <p>Office no 1042, Gaur City Mall, Office Suits, Greater Noida, Uttar Pradesh, India, 201310</p>
+            </div>
+            <div className="flex items-center gap-3 text-indigo-200 font-medium text-sm">
+              <Mail size={20} className="text-orange-500 flex-shrink-0" />
+              <a href="mailto:sell@tukka.tech" className="hover:text-white transition-colors">sell@tukka.tech</a>
             </div>
           </div>
           
@@ -792,13 +796,13 @@ export default function App() {
         return (
           <div className="flex flex-col gap-4 w-full">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
-              <div className="flex items-center gap-2">
+              <a href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
                 <div className="w-8 h-8 bg-indigo-900 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-md shadow-indigo-100">T</div>
                 <div className="flex flex-col">
                   <span className="text-lg font-bold tracking-tight text-indigo-950 leading-none">Tukka.tech</span>
                   <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider mt-0.5">( Sellers Login Authorized Partner )</span>
                 </div>
-              </div>
+              </a>
               <div className="flex items-center gap-1.5 bg-orange-50 px-3 py-1 rounded-full border border-orange-100">
                 <Zap className="text-orange-600" size={12} />
                 <span className="text-[9px] font-black text-orange-600 uppercase tracking-[0.1em]">Limited Time Offer</span>
