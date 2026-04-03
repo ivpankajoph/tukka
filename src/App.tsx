@@ -22,7 +22,8 @@ import {
   Mail,
   Phone,
   MapPin,
-  ChevronRight
+  ChevronRight,
+  RotateCcw
 } from "lucide-react";
 import { useState, useEffect, ReactNode, FormEvent } from "react";
 
@@ -208,7 +209,7 @@ const HelpCenterContent = () => {
     { q: "What is the cost to start?", a: "We build your professional e-commerce store for a flat subscription of just ₹599 per month. There are no upfront setup fees or hidden charges." },
     { q: "How long does it take to go live?", a: "Once you provide your product catalog and business details, our team can have your professional store ready in as little as 48 hours." },
     { q: "Who handles the delivery?", a: "We have a pan-India logistics network. When an order is placed, we handle the pickup from your location and delivery to the customer." },
-    { q: "Is there any commission on sales?", a: "No! Unlike other platforms, we charge zero commission on your sales. You keep 100% of your revenue, paying only the flat monthly fee." }
+    { q: "Is there any commission on sales?", a: "We charge a minimal 2% commission on your sales for payment processing and platform maintenance. You keep 98% of your revenue, plus the flat monthly fee." }
   ];
 
   return (
@@ -264,8 +265,8 @@ const PrivacyPolicyContent = () => (
 const TermsOfServiceContent = () => (
   <div className="prose prose-indigo max-w-none text-gray-600 font-medium leading-relaxed space-y-6">
     <p>By using Tukka.tech, you agree to the following terms and conditions.</p>
-    <h4 className="text-xl font-black text-indigo-950">1. Subscription Model</h4>
-    <p>Tukka.tech operates on a flat monthly subscription of ₹599. This fee covers website maintenance, hosting, and access to our ecosystem tools.</p>
+    <h4 className="text-xl font-black text-indigo-950">1. Subscription Model & Fees</h4>
+    <p>Tukka.tech operates on a flat monthly subscription of ₹599. This fee covers website maintenance, hosting, and access to our ecosystem tools. In addition, a minimal 2% commission is applied to all sales processed through the platform.</p>
     <h4 className="text-xl font-black text-indigo-950">2. Service Scope</h4>
     <p>We provide website creation, hosting, marketing support, and logistics. The quality and legality of products sold are the sole responsibility of the merchant.</p>
     <h4 className="text-xl font-black text-indigo-950">3. Logistics</h4>
@@ -334,7 +335,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
 
 const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-28 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
       {/* Background Accents */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-50/30 -skew-x-12 transform origin-top-right -z-10"></div>
       
@@ -354,7 +355,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
             </h1>
             <p className="text-xl lg:text-2xl text-gray-600 mb-10 max-w-xl leading-relaxed font-medium">
               Professional e-commerce website with full support. <br className="hidden lg:block" />
-              Flat monthly fee. <span className="text-indigo-900 font-bold underline decoration-orange-500 decoration-4 underline-offset-4">Zero Commission on Sales.</span>
+              Flat monthly fee. <span className="text-indigo-900 font-bold underline decoration-orange-500 decoration-4 underline-offset-4">Only 2% Commission on Sales.</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
               <button 
@@ -376,13 +377,18 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
               </div>
               <div className="w-px h-12 bg-gray-200"></div>
               <div>
-                <p className="text-3xl font-black text-indigo-950">0%</p>
+                <p className="text-3xl font-black text-indigo-950">2%</p>
                 <p className="text-sm font-bold text-gray-500 uppercase tracking-wider">Commission</p>
               </div>
               <div className="w-px h-12 bg-gray-200"></div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="text-green-600" size={32} />
                 <p className="text-sm font-bold text-gray-700 leading-tight">Zero Risk <br /> for Retailers</p>
+              </div>
+              <div className="w-px h-12 bg-gray-200 hidden sm:block"></div>
+              <div className="flex items-center gap-2">
+                <RotateCcw className="text-blue-500" size={32} />
+                <p className="text-sm font-bold text-gray-700 leading-tight">7 Days <br /> Refund</p>
               </div>
             </div>
           </motion.div>
@@ -395,7 +401,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
           >
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(30,27,75,0.25)] border-8 border-white">
               <img 
-                src="https://picsum.photos/seed/indian-packing/1200/800" 
+                src="/ecom.png" 
                 alt="Indian e-commerce team packing orders" 
                 className="w-full h-auto object-cover"
                 referrerPolicy="no-referrer"
@@ -513,13 +519,13 @@ const HowItWorks = ({ onOpenModal }: { onOpenModal: (type: string) => void }) =>
     },
     {
       number: "4",
-      title: "Scale with 0% Commission",
-      description: "We handle delivery and payments. You keep 100% of your revenue, paying only ₹599/month."
+      title: "Scale with Minimal 2% Commission",
+      description: "We handle delivery and payments. You keep 98% of your revenue, alongside a flat ₹599/month."
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-32 bg-white">
+    <section id="how-it-works" className="py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-24">
           <h2 className="text-indigo-900 font-black uppercase tracking-[0.3em] text-sm mb-6">Simple 4-Step Process</h2>
@@ -591,7 +597,7 @@ const Pricing = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
               <div className="p-12 lg:p-20 flex flex-col justify-center">
                 <h3 className="text-3xl font-black text-indigo-950 mb-8 tracking-tight">What You Get</h3>
                 <div className="flex items-baseline gap-4 mb-10">
-                  <span className="text-8xl font-black text-orange-500 tracking-tighter">0%</span>
+                  <span className="text-8xl font-black text-orange-500 tracking-tighter">2%</span>
                   <span className="text-xl font-bold text-gray-500 uppercase tracking-widest">Commission</span>
                 </div>
                 
@@ -672,7 +678,7 @@ const DeliveryBanner = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-orange-500/10 rounded-[3rem] rotate-3 -z-10"></div>
               <img 
-                src="https://picsum.photos/seed/delivery-boy/1000/600" 
+                src="/ecom2.jpg" 
                 alt="Courier boy delivering package to home" 
                 className="relative z-10 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(249,115,22,0.3)] w-full h-auto object-cover border-8 border-white"
                 referrerPolicy="no-referrer"
@@ -698,9 +704,13 @@ const Footer = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
                 <span className="text-[11px] font-bold text-indigo-200 uppercase tracking-wider mt-1">( Sellers Login Authorized Partner )</span>
               </div>
             </div>
-            <p className="text-indigo-200 mb-10 leading-relaxed font-medium text-lg">
-              Empowering local brands to go digital with zero commission and maximum growth.
+            <p className="text-indigo-200 mb-6 leading-relaxed font-medium text-lg">
+              Empowering local brands to go digital with minimal 2% commission and maximum growth.
             </p>
+            <div className="flex items-start gap-3 text-indigo-200 font-medium text-sm">
+              <MapPin size={20} className="mt-0.5 text-orange-500 flex-shrink-0" />
+              <p>Office no 1042, Gaur City Mall, Office Suits, Greater Noida, Uttar Pradesh, India, 201310</p>
+            </div>
           </div>
           
           <div>
@@ -799,7 +809,7 @@ export default function App() {
                 We Create your Ecommerce Website in Just <span className="text-orange-600">Rs 599/month</span>
               </h2>
               <p className="text-xs lg:text-sm font-medium text-gray-500 leading-relaxed">
-                Hosting, Analytics, payment gateway, courier collection everything include
+               You will get Hosting , Live Advance Analytics , Payment Gateway , Courior collection and many features in dashboard
               </p>
             </div>
           </div>
